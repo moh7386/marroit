@@ -1,33 +1,37 @@
 {
   "menu": [
     {
-      "title": "المقبلات",
+      "title_ar": "المقبلات",
+      "title_en": "Appetizers",
       "items": [
-        { "name": "حمص بالطحينة", "price": 20 },
-        { "name": "ورق عنب", "price": 25 }
+        { "name_ar": "حمص بالطحينة", "name_en": "Hummus with Tahini", "price": 20 },
+        { "name_ar": "ورق عنب", "name_en": "Stuffed Grape Leaves", "price": 25 }
       ]
     },
     {
-      "title": "الأطباق الرئيسية",
+      "title_ar": "الأطباق الرئيسية",
+      "title_en": "Main Courses",
       "items": [
-        { "name": "مشاوي مشكلة", "price": 65 },
-        { "name": "كباب لحم مع أرز", "price": 60 },
-        { "name": "دجاج مشوي", "price": 55 }
+        { "name_ar": "مشاوي مشكلة", "name_en": "Mixed Grill", "price": 65 },
+        { "name_ar": "كباب لحم مع أرز", "name_en": "Lamb Kebab with Rice", "price": 60 },
+        { "name_ar": "دجاج مشوي", "name_en": "Grilled Chicken", "price": 55 }
       ]
     },
     {
-      "title": "الحلويات",
+      "title_ar": "الحلويات",
+      "title_en": "Desserts",
       "items": [
-        { "name": "كنافة بالقشطة", "price": 30 },
-        { "name": "بقلاوة مشكّلة", "price": 28 }
+        { "name_ar": "كنافة بالقشطة", "name_en": "Kunafa with Cream", "price": 30 },
+        { "name_ar": "بقلاوة مشكّلة", "name_en": "Mixed Baklava", "price": 28 }
       ]
     },
     {
-      "title": "المشروبات",
+      "title_ar": "المشروبات",
+      "title_en": "Beverages",
       "items": [
-        { "name": "ماء معدني", "price": 5 },
-        { "name": "عصير برتقال طازج", "price": 15 },
-        { "name": "شاي أو قهوة", "price": 12 }
+        { "name_ar": "ماء معدني", "name_en": "Mineral Water", "price": 5 },
+        { "name_ar": "عصير برتقال طازج", "name_en": "Fresh Orange Juice", "price": 15 },
+        { "name_ar": "شاي أو قهوة", "name_en": "Tea or Coffee", "price": 12 }
       ]
     }
   ]
