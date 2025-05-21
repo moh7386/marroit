@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>قائمة الطعام - فندق ماريوت</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .menu {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #34495e;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #ccc;
+    }
+    .item:last-child {
+      border-bottom: none;
+    }
+    .name {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .price {
+      color: #16a085;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>قائمة الطعام</h1>
+  <p>مطعم فندق ماريوت</p>
+</header>
+
+<div class="menu" id="menu"></div>
+
+<script>
+  fetch('config.json')
+    .then(response => response.json())
+    .then(data => {
+      const menuContainer = document.getElementById('menu');
+      for (const section of data.menu) {
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.textContent = section.title;
+        menuContainer.appendChild(sectionTitle);
+
+        for (const item of section.items) {
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'item';
+
+          const nameDiv = document.createElement('div');
+          nameDiv.className = 'name';
+          nameDiv.textContent = item.name;
+
+          const priceDiv = document.createElement('div');
+          priceDiv.className = 'price';
+          priceDiv.textContent = item.price + ' ريال';
+
+          itemDiv.appendChild(nameDiv);
+          itemDiv.appendChild(priceDiv);
+          menuContainer.appendChild(itemDiv);
+        }
+      }
+    })
+    .catch(error => {
+      console.error('فشل تحميل البيانات:', error);
+      document.getElementById('menu').textContent = 'حدث خطأ أثناء تحميل القائمة.';
+    });
+</script>
+
+</body>
+</html>
