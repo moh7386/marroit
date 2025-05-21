@@ -4,34 +4,34 @@
       "title_ar": "المقبلات",
       "title_en": "Appetizers",
       "items": [
-        { "name_ar": "حمص بالطحينة", "name_en": "Hummus with Tahini", "price": 20 },
-        { "name_ar": "ورق عنب", "name_en": "Stuffed Grape Leaves", "price": 25 }
+        { "name_ar": "حمص بالطحينة", "name_en": "Hummus with Tahini", "price": 2000 },
+        { "name_ar": "ورق عنب", "name_en": "Stuffed Grape Leaves", "price": 2500 }
       ]
     },
     {
       "title_ar": "الأطباق الرئيسية",
       "title_en": "Main Courses",
       "items": [
-        { "name_ar": "مشاوي مشكلة", "name_en": "Mixed Grill", "price": 65 },
-        { "name_ar": "كباب لحم مع أرز", "name_en": "Lamb Kebab with Rice", "price": 60 },
-        { "name_ar": "دجاج مشوي", "name_en": "Grilled Chicken", "price": 55 }
+        { "name_ar": "مشاوي مشكلة", "name_en": "Mixed Grill", "price": 6500 },
+        { "name_ar": "كباب لحم مع أرز", "name_en": "Lamb Kebab with Rice", "price": 6000 },
+        { "name_ar": "دجاج مشوي", "name_en": "Grilled Chicken", "price": 5500 }
       ]
     },
     {
       "title_ar": "الحلويات",
       "title_en": "Desserts",
       "items": [
-        { "name_ar": "كنافة بالقشطة", "name_en": "Kunafa with Cream", "price": 30 },
-        { "name_ar": "بقلاوة مشكّلة", "name_en": "Mixed Baklava", "price": 28 }
+        { "name_ar": "كنافة بالقشطة", "name_en": "Kunafa with Cream", "price": 3000 },
+        { "name_ar": "بقلاوة مشكّلة", "name_en": "Mixed Baklava", "price": 2800 }
       ]
     },
     {
       "title_ar": "المشروبات",
       "title_en": "Beverages",
       "items": [
-        { "name_ar": "ماء معدني", "name_en": "Mineral Water", "price": 5 },
-        { "name_ar": "عصير برتقال طازج", "name_en": "Fresh Orange Juice", "price": 15 },
-        { "name_ar": "شاي أو قهوة", "name_en": "Tea or Coffee", "price": 12 }
+        { "name_ar": "ماء معدني", "name_en": "Mineral Water", "price": 500 },
+        { "name_ar": "عصير برتقال طازج", "name_en": "Fresh Orange Juice", "price": 1500 },
+        { "name_ar": "شاي أو قهوة", "name_en": "Tea or Coffee", "price": 1200 }
       ]
     }
   ]
