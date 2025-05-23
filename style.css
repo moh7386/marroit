@@ -1,0 +1,274 @@
+/* Global Resets and Font Setup */
+:root {
+    --primary-color: #003580; /* Marriott Blue */
+    --secondary-color: #d4af37; /* Gold Accent */
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --item-bg-color: #ffffff;
+    --border-color: #dee2e6;
+    --arabic-font: 'Cairo', sans-serif;
+    --english-font: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--english-font); /* Default to English font */
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out; /* Animation for hotel bg */
+}
+
+[lang="ar"], .arabic-text {
+    font-family: var(--arabic-font);
+}
+
+.menu-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header Styling */
+#menu-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#menu-header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+#menu-header h1.arabic-text {
+    font-family: var(--arabic-font);
+}
+#menu-header h1.english-text {
+    font-family: var(--english-font);
+    font-size: 1.8em; /* Slightly smaller for English if preferred */
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+
+/* Category Navigation */
+#category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#category-nav button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 8px;
+    border-radius: 25px; /* Pill shape */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#category-nav button .category-name-ar {
+    font-family: var(--arabic-font);
+}
+#category-nav button .category-name-en {
+    font-family: var(--english-font);
+    font-size: 0.9em;
+    display: block;
+    opacity: 0.8;
+}
+
+
+#category-nav button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#category-nav button.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+}
+
+/* Menu Items Container */
+#menu-items-container {
+    padding: 25px;
+    min-height: 400px; /* Ensure it has some height */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.8s ease-in-out; /* Smooth background transition */
+    border-radius: 0 0 10px 10px; /* If header has top radius */
+}
+
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-color);
+}
+.welcome-title-ar, .welcome-title-en {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+.welcome-title-ar { font-family: var(--arabic-font); }
+.welcome-title-en { font-family: var(--english-font); }
+.welcome-text-ar, .welcome-text-en {
+    font-size: 1.1em;
+}
+.welcome-text-ar { font-family: var(--arabic-font); }
+.welcome-text-en { font-family: var(--english-font); }
+
+
+/* Individual Menu Item Styling */
+.menu-item {
+    background-color: var(--item-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to top */
+    margin-bottom: 10px;
+}
+
+.item-name .name-ar {
+    font-family: var(--arabic-font);
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+}
+
+.item-name .name-en {
+    font-family: var(--english-font);
+    font-size: 1.1em;
+    color: #555;
+    display: block;
+    margin-top: 4px;
+}
+
+.item-price {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--secondary-color);
+    white-space: nowrap; /* Prevent price from wrapping */
+    padding-left: 15px; /* Space between name and price */
+}
+.item-price .price-ar { font-family: var(--arabic-font); }
+.item-price .price-en { font-family: var(--english-font); font-size: 0.9em;}
+
+
+.item-description {
+    font-size: 0.95em;
+    color: #666;
+}
+.item-description .desc-ar {
+    font-family: var(--arabic-font);
+    display: block;
+    margin-bottom: 5px;
+}
+.item-description .desc-en {
+    font-family: var(--english-font);
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styling */
+#menu-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+}
+#menu-footer p { margin: 5px 0; }
+#menu-footer .arabic-text { font-family: var(--arabic-font); }
+#menu-footer .english-text { font-family: var(--english-font); }
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-container {
+        margin: 10px;
+        border-radius: 0;
+    }
+    #category-nav button {
+        padding: 8px 12px;
+        margin: 5px;
+        font-size: 0.9em;
+    }
+    #menu-header h1 {
+        font-size: 1.8em;
+    }
+    #menu-header h1.english-text {
+        font-size: 1.5em;
+    }
+    .menu-item {
+        padding: 15px;
+    }
+    .item-name .name-ar { font-size: 1.2em; }
+    .item-name .name-en { font-size: 1em; }
+    .item-price { font-size: 1.1em; }
+}
+
+@media (max-width: 480px) {
+    #category-nav {
+        justify-content: space-around; /* Better for very small screens */
+    }
+    #category-nav button {
+        width: calc(50% - 10px); /* Two buttons per row */
+        font-size: 0.85em;
+    }
+    .item-header {
+        flex-direction: column; /* Stack name and price on small screens */
+        align-items: flex-start;
+    }
+    .item-price {
+        padding-left: 0;
+        margin-top: 8px;
+    }
+}
+
+/* Simple Ken Burns effect for body background */
+@keyframes kenburns {
+    0% {
+        transform: scale(1.05) translate(1%, -1%);
+    }
+    50% {
+        transform: scale(1.1) translate(-1%, 1%);
+    }
+    100% {
+        transform: scale(1.05) translate(1%, -1%);
+    }
+}
+
+body.animate-bg {
+    animation: kenburns 30s ease-in-out infinite;
+}
