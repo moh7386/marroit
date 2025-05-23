@@ -1,274 +1,426 @@
-/* Global Resets and Font Setup */
+/* style.css */
 :root {
-    --primary-color: #003580; /* Marriott Blue */
-    --secondary-color: #d4af37; /* Gold Accent */
-    --text-color: #333;
-    --background-color: #f8f9fa;
-    --item-bg-color: #ffffff;
-    --border-color: #dee2e6;
-    --arabic-font: 'Cairo', sans-serif;
-    --english-font: 'Roboto', sans-serif;
+    --primary-color: #5D4037; /* Dark Brown */
+    --secondary-color: #6B8E23; /* Olive Green */
+    --accent-color: #FFF8E1; /* Creamy/Light Beige */
+    --text-color: #3E2723; /* Darker Brown for text */
+    --text-light-color: #F5F5F5;
+    --background-main: #FAF0E6; /* Lightest Beige for overall bg */
+    --card-bg: #ffffffc9;
+    --border-color: #D7CCC8; /* Light brown-gray for borders */
+
+    --font-ar: 'Tajawal', sans-serif;
+    --font-en: 'Lato', sans-serif;
+    --font-en-display: 'Playfair Display', serif;
+
+    --shadow-light: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-medium: 0 5px 15px rgba(0,0,0,0.12);
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: var(--english-font); /* Default to English font */
-    margin: 0;
-    background-color: var(--background-color);
+    font-family: var(--font-en);
+    background-color: var(--background-main);
     color: var(--text-color);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.arabic-text { font-family: var(--font-ar); }
+.english-text { font-family: var(--font-en); }
+
+#app-container {
+    max-width: 1200px; /* Max width for desktop, menu itself will be narrower */
+    margin: 0 auto;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light-color);
+    position: relative;
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    transition: background-image 1s ease-in-out; /* Animation for hotel bg */
+    background-position: center center;
+    padding: 20px;
 }
 
-[lang="ar"], .arabic-text {
-    font-family: var(--arabic-font);
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    z-index: 1;
 }
 
-.menu-container {
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    overflow: hidden;
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInScaleUp 1s ease-out forwards;
 }
 
-/* Header Styling */
+@keyframes fadeInScaleUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.hotel-logo-main {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: var(--font-ar);
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-family: var(--font-en-display);
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+    opacity: 0.9;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.cta-button {
+    background-color: var(--secondary-color);
+    color: var(--text-light-color);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--shadow-medium);
+}
+.cta-button .english-text { display: block; font-size: 0.9em; opacity: 0.9; }
+.cta-button:hover {
+    background-color: #5a751c; /* Darker Olive */
+    transform: translateY(-3px);
+}
+
+/* --- Menu View (Initially Hidden) --- */
+.menu-view-hidden {
+    display: none; /* Initially hidden */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.menu-view-visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    background-color: var(--background-main);
+    min-height: 100vh; /* Ensure it takes full height if content is short */
+}
+
+
+/* Menu Header */
 #menu-header {
     background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
+    color: var(--accent-color);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-
+.hotel-logo-header {
+    max-height: 40px;
+    margin-right: 15px; /* LTR */
+}
+[dir="rtl"] .hotel-logo-header {
+    margin-right: 0;
+    margin-left: 15px;
+}
 #menu-header h1 {
+    font-family: var(--font-ar);
+    font-size: 1.6em;
     margin: 0;
-    font-size: 2.2em;
-    font-weight: 700;
 }
-#menu-header h1.arabic-text {
-    font-family: var(--arabic-font);
-}
-#menu-header h1.english-text {
-    font-family: var(--english-font);
-    font-size: 1.8em; /* Slightly smaller for English if preferred */
-    margin-top: 5px;
+#menu-header h2 {
+    font-family: var(--font-en-display);
+    font-size: 1.2em;
+    margin: 0;
     opacity: 0.9;
 }
-
+.back-button {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 5px;
+}
+.back-button svg {
+    width: 28px;
+    height: 28px;
+}
 
 /* Category Navigation */
 #category-nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 15px;
-    background-color: #e9ecef;
+    overflow-x: auto; /* Allow horizontal scrolling on mobile */
+    padding: 15px 10px;
+    background-color: var(--accent-color);
     border-bottom: 1px solid var(--border-color);
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: var(--secondary-color) var(--accent-color); /* For Firefox */
 }
+#category-nav::-webkit-scrollbar { height: 6px; }
+#category-nav::-webkit-scrollbar-thumb { background-color: var(--secondary-color); border-radius: 10px; }
+#category-nav::-webkit-scrollbar-track { background-color: var(--accent-color); }
 
 #category-nav button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    margin: 8px;
-    border-radius: 25px; /* Pill shape */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 8px 18px;
+    margin: 0 8px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.95em;
     font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent button text from wrapping */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
 }
-#category-nav button .category-name-ar {
-    font-family: var(--arabic-font);
-}
-#category-nav button .category-name-en {
-    font-family: var(--english-font);
-    font-size: 0.9em;
-    display: block;
-    opacity: 0.8;
-}
+#category-nav button .cat-icon { margin-right: 8px; vertical-align: middle; width: 18px; height: 18px;} /* LTR */
+[dir="rtl"] #category-nav button .cat-icon { margin-right: 0; margin-left: 8px;}
 
+#category-nav button .category-name-en { font-size: 0.85em; display: block; opacity: 0.8; }
 
-#category-nav button:hover {
-    background-color: var(--secondary-color);
+#category-nav button:hover, #category-nav button.active {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border-color: var(--primary-color);
     transform: translateY(-2px);
 }
-
 #category-nav button.active {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 3px 8px rgba(93, 64, 55, 0.3);
 }
 
-/* Menu Items Container */
-#menu-items-container {
-    padding: 25px;
-    min-height: 400px; /* Ensure it has some height */
+
+/* Items Display Area */
+#items-display-area {
+    padding: 0px; /* Background image will cover edges */
     background-size: cover;
     background-position: center;
-    transition: background-image 0.8s ease-in-out; /* Smooth background transition */
-    border-radius: 0 0 10px 10px; /* If header has top radius */
+    background-attachment: fixed; /* Or 'scroll' if you prefer */
+    transition: background-image 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    min-height: 60vh; /* Give it some height */
 }
 
-/* Welcome Message */
-.welcome-message {
+#category-title-indicator {
     text-align: center;
-    padding: 50px 20px;
-    color: var(--text-color);
+    padding: 25px 20px 15px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight overlay for title if bg is busy */
+    backdrop-filter: blur(3px); /* Frosted glass effect for title bg */
 }
-.welcome-title-ar, .welcome-title-en {
+#current-category-name-ar {
+    font-family: var(--font-ar);
     font-size: 2em;
-    margin-bottom: 10px;
+    color: var(--primary-color);
+    margin-bottom: 0.1em;
 }
-.welcome-title-ar { font-family: var(--arabic-font); }
-.welcome-title-en { font-family: var(--english-font); }
-.welcome-text-ar, .welcome-text-en {
-    font-size: 1.1em;
+#current-category-name-en {
+    font-family: var(--font-en-display);
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    opacity: 0.9;
 }
-.welcome-text-ar { font-family: var(--arabic-font); }
-.welcome-text-en { font-family: var(--english-font); }
 
-
-/* Individual Menu Item Styling */
-.menu-item {
-    background-color: var(--item-bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 20px;
+#menu-items-container {
     padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px;
+}
+
+/* Individual Menu Item */
+.menu-item {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .menu-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
 }
 
-.item-header {
+.item-image-container {
+    width: 100%;
+    height: 180px; /* Adjust as needed */
+    overflow: hidden;
+}
+.item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop image to fit */
+    transition: transform 0.4s ease;
+}
+.menu-item:hover .item-image-container img {
+    transform: scale(1.05);
+}
+
+.item-content {
+    padding: 15px;
+    flex-grow: 1; /* Allows description to push price down */
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items to top */
-    margin-bottom: 10px;
+    flex-direction: column;
 }
 
 .item-name .name-ar {
-    font-family: var(--arabic-font);
-    font-size: 1.4em;
+    font-family: var(--font-ar);
+    font-size: 1.3em;
     font-weight: 700;
     color: var(--primary-color);
     display: block;
 }
-
 .item-name .name-en {
-    font-family: var(--english-font);
-    font-size: 1.1em;
+    font-family: var(--font-en);
+    font-size: 1.05em;
     color: #555;
     display: block;
-    margin-top: 4px;
+    margin-top: 3px;
 }
+
+.item-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+    flex-grow: 1; /* Takes available space */
+}
+.item-description .desc-ar, .item-description .desc-en {
+    display: block;
+    margin-bottom: 4px;
+}
+.item-description .desc-en { font-style: italic; }
+
+.item-price-section {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    text-align: right; /* LTR */
+}
+[dir="rtl"] .item-price-section { text-align: left; }
 
 .item-price {
     font-size: 1.3em;
     font-weight: 700;
     color: var(--secondary-color);
-    white-space: nowrap; /* Prevent price from wrapping */
-    padding-left: 15px; /* Space between name and price */
 }
-.item-price .price-ar { font-family: var(--arabic-font); }
-.item-price .price-en { font-family: var(--english-font); font-size: 0.9em;}
-
-
-.item-description {
-    font-size: 0.95em;
-    color: #666;
-}
-.item-description .desc-ar {
-    font-family: var(--arabic-font);
-    display: block;
-    margin-bottom: 5px;
-}
-.item-description .desc-en {
-    font-family: var(--english-font);
-    display: block;
-    font-style: italic;
+.item-price .price-currency-ar, .item-price .price-currency-en {
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
-/* Footer Styling */
+/* No items message */
+.no-items-message {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.1em;
+    color: #777;
+}
+
+/* Footer */
 #menu-footer {
     text-align: center;
-    padding: 15px;
-    background-color: #f1f1f1;
+    padding: 20px;
+    background-color: var(--accent-color);
     border-top: 1px solid var(--border-color);
     font-size: 0.9em;
+    color: var(--text-color);
 }
-#menu-footer p { margin: 5px 0; }
-#menu-footer .arabic-text { font-family: var(--arabic-font); }
-#menu-footer .english-text { font-family: var(--english-font); }
+#menu-footer p { margin: 3px 0; }
+
+/* Animations for item loading */
+@keyframes fadeInItem {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.menu-item {
+    animation: fadeInItem 0.5s ease-out forwards;
+    opacity: 0; /* Start hidden for animation */
+}
+/* Staggered animation for items */
+/* .menu-item:nth-child(1) { animation-delay: 0.05s; }
+.menu-item:nth-child(2) { animation-delay: 0.1s; }
+.menu-item:nth-child(3) { animation-delay: 0.15s; }
+... and so on, can be done with JS for more items */
 
 
-/* Responsive adjustments */
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    #menu-items-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
-    .menu-container {
-        margin: 10px;
-        border-radius: 0;
-    }
-    #category-nav button {
-        padding: 8px 12px;
-        margin: 5px;
-        font-size: 0.9em;
-    }
-    #menu-header h1 {
-        font-size: 1.8em;
-    }
-    #menu-header h1.english-text {
-        font-size: 1.5em;
-    }
-    .menu-item {
-        padding: 15px;
-    }
+    .hero-title { font-size: 2.2em; }
+    .hero-subtitle { font-size: 1.6em; }
+    .cta-button { padding: 12px 30px; font-size: 1em; }
+
+    #menu-header h1 { font-size: 1.4em; }
+    #menu-header h2 { font-size: 1.1em; }
+    .hotel-logo-header { max-height: 35px; }
+
+    #category-nav button { padding: 8px 15px; font-size: 0.9em; }
+    #current-category-name-ar { font-size: 1.7em; }
+    #current-category-name-en { font-size: 1.3em; }
+
     .item-name .name-ar { font-size: 1.2em; }
     .item-name .name-en { font-size: 1em; }
-    .item-price { font-size: 1.1em; }
+    .item-price { font-size: 1.2em; }
 }
 
 @media (max-width: 480px) {
-    #category-nav {
-        justify-content: space-around; /* Better for very small screens */
-    }
-    #category-nav button {
-        width: calc(50% - 10px); /* Two buttons per row */
-        font-size: 0.85em;
-    }
-    .item-header {
-        flex-direction: column; /* Stack name and price on small screens */
-        align-items: flex-start;
-    }
-    .item-price {
-        padding-left: 0;
-        margin-top: 8px;
-    }
-}
+    .hero-title { font-size: 1.8em; }
+    .hero-subtitle { font-size: 1.3em; }
+    .hotel-logo-main { max-width: 100px; }
 
-/* Simple Ken Burns effect for body background */
-@keyframes kenburns {
-    0% {
-        transform: scale(1.05) translate(1%, -1%);
-    }
-    50% {
-        transform: scale(1.1) translate(-1%, 1%);
-    }
-    100% {
-        transform: scale(1.05) translate(1%, -1%);
-    }
-}
+    #menu-header { padding: 10px 15px; }
+    #menu-header h1 { font-size: 1.2em; }
+    #menu-header h2 { font-size: 0.9em; }
+    .hotel-logo-header { max-height: 30px; }
 
-body.animate-bg {
-    animation: kenburns 30s ease-in-out infinite;
+    #category-nav { padding: 10px 5px; }
+    #category-nav button { padding: 7px 12px; font-size: 0.85em; margin: 0 5px; }
+
+    #current-category-name-ar { font-size: 1.5em; }
+    #current-category-name-en { font-size: 1.1em; }
+    
+    #menu-items-container {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        padding: 15px;
+        gap: 20px;
+    }
+    .item-image-container { height: 160px; }
 }

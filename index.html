@@ -3,35 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة طعام فندق ماريوت عدن</title>
+    <title id="pageTitle">قائمة الطعام</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - اختر خطوطًا أنيقة -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (optional, if you use them in config) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
-    <div class="menu-container">
-        <header id="menu-header">
-            <!-- سيتم تعبئته بواسطة JavaScript -->
-        </header>
 
-        <nav id="category-nav">
-            <!-- أزرار الأقسام سيتم إنشاؤها هنا بواسطة JavaScript -->
-        </nav>
-
-        <main id="menu-items-container">
-            <!-- أصناف القسم المختار سيتم عرضها هنا -->
-            <div class="welcome-message">
-                <h2 class="welcome-title-ar">أهلاً وسهلاً</h2>
-                <h2 class="welcome-title-en">Welcome</h2>
-                <p class="welcome-text-ar">يرجى اختيار قسم من القائمة أعلاه لعرض الأصناف.</p>
-                <p class="welcome-text-en">Please select a category from the menu above to view items.</p>
+    <div id="app-container">
+        <!-- شاشة البداية / الترحيب -->
+        <section id="hero-section" class="hero">
+		<h1 style="color:white"> رحلة طعام لا تنسى في انتظارك</h1>
+            <div class="hero-content">
+                <img id="hotel-logo-hero" src="" alt="Hotel Logo" class="hotel-logo-main">
+                <h1 id="welcome-title-ar" class="hero-title arabic-text"></h1>
+                <h2 id="welcome-title-en" class="hero-subtitle english-text"></h2>
+                <button id="view-menu-btn" class="cta-button">
+                    <span class="arabic-text">عرض القائمة</span>
+                    <span class="english-text">View Menu</span>
+                </button>
             </div>
-        </main>
+            <div class="hero-overlay"></div>
+        </section>
 
-        <footer id="menu-footer">
-            <!-- سيتم تعبئته بواسطة JavaScript -->
-        </footer>
+        <!-- حاوية القائمة الرئيسية (مخفية في البداية) -->
+        <main id="menu-view" class="menu-view-hidden">
+            <header id="menu-header">
+                <img id="hotel-logo-header" src="" alt="Hotel Logo" class="hotel-logo-header">
+                <div>
+                    <h1 id="hotel-name-ar-header" class="arabic-text"></h1>
+                    <h2 id="hotel-name-en-header" class="english-text"></h2>
+                </div>
+                <button id="back-to-hero-btn" class="back-button" title="العودة للرئيسية">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+                </button>
+            </header>
+
+            <nav id="category-nav">
+                <!-- أزرار الأقسام -->
+            </nav>
+
+            <section id="items-display-area">
+                <div id="category-title-indicator">
+                    <h2 style="color:white;" id="current-category-name-ar" class="arabic-text"></h2>
+                    <h3 style="color:white;" id="current-category-name-en" class="english-text"></h3>
+                </div>
+                <div id="menu-items-container">
+                    <!-- أصناف القسم -->
+                </div>
+            </section>
+
+            <footer id="menu-footer">
+                <p id="room-service-ar" class="arabic-text"></p>
+                <p id="room-service-en" class="english-text"></p>
+            </footer>
+        </main>
     </div>
 
+    <script src="menu-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
