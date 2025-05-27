@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">قائمة الطعام</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts - اختر خطوطًا أنيقة -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons (optional, if you use them in config) -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <!-- استخدام خطوط مشابهة أو أنيقة -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="app-container">
         <!-- شاشة البداية / الترحيب -->
         <section id="hero-section" class="hero">
-		<h1 style="color:white"> رحلة طعام لا تنسى في انتظارك</h1>
+		 <div id="hero-slider-container">
+                <!-- سيتم تعبئة الصور هنا بواسطة JavaScript -->
+            </div>
             <div class="hero-content">
-                <img id="hotel-logo-hero" src="" alt="Hotel Logo" class="hotel-logo-main">
-                <h1 id="welcome-title-ar" class="hero-title arabic-text"></h1>
-                <h2 id="welcome-title-en" class="hero-subtitle english-text"></h2>
+                <img id="hotel-logo-hero" src="" alt="Logo" class="hotel-logo-main">
+                <h1 id="hero-main-title-ar" class="hero-title arabic-text"></h1>
+                <p id="hero-subtitle-ar" class="hero-subtitle arabic-text"></p>
                 <button id="view-menu-btn" class="cta-button">
-                    <span class="arabic-text">عرض القائمة</span>
-                    <span class="english-text">View Menu</span>
+                    <span id="hero-button-text-ar" class="arabic-text"></span>
+                    <!-- <span class="english-text">View Menu</span> -->
                 </button>
             </div>
             <div class="hero-overlay"></div>
@@ -30,6 +30,7 @@
 
         <!-- حاوية القائمة الرئيسية (مخفية في البداية) -->
         <main id="menu-view" class="menu-view-hidden">
+            <!-- ... (بقية محتوى menu-view يبقى كما هو) ... -->
             <header id="menu-header">
                 <img id="hotel-logo-header" src="" alt="Hotel Logo" class="hotel-logo-header">
                 <div>
@@ -46,9 +47,12 @@
             </nav>
 
             <section id="items-display-area">
-                <div id="category-title-indicator">
-                    <h2 style="color:white;" id="current-category-name-ar" class="arabic-text"></h2>
-                    <h3 style="color:white;" id="current-category-name-en" class="english-text"></h3>
+                <div id="category-info-header">
+                    <img id="current-category-main-image" src="" alt="Category Image" class="category-main-image">
+                    <div id="category-title-indicator">
+                        <h2 id="current-category-name-ar" class="arabic-text"></h2>
+                        <h3 id="current-category-name-en" class="english-text"></h3>
+                    </div>
                 </div>
                 <div id="menu-items-container">
                     <!-- أصناف القسم -->
